@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewData["Title"] = "TongHaiSo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="d-flex flex-column">
+    <h1 class="text-center my-5 text-uppercase">chương trình tính tổng hai số</h1>
+    <div class="d-flex flex-column justify-content-between gap-3">
+        <div class="col-4 mx-auto">
+            <form action="/TongHaiSo/TongHaiSo" method="post"> //Thuộc tính form dùng để gửi dữ liệu về thông qua phương thức post, action là địa chỉ gửi dữ liệu đến
+                                                           
+                <div class="mb-3">
+                    <label for="soNguyen1" class="form-label">Số nguyên 1</label> 
+                    <input type="number" inputmode="numeric" class="form-control" id="soNguyen1" name="soNguyen1" value="@ViewData["SoNguyen1"]" aria-describedby="text">// thuộc tính name được đặt dựa trên tiêu đề
+                </div>
+                <div class="mb-3">
+                    <label for="soNguyen2" class="form-label">Số nguyên 2</label>
+                    <input type="number" inputmode="numeric" class="form-control" id="soNguyen2" name="soNguyen2" value="@ViewData["SoNguyen2"]" aria-describedby="text">
+                </div>
+                <div class="d-flex align-items-center justify-content-center mt-5">
+                    <button type="submit" id="ketqua" class="btn btn-primary px-4 py-2">Xem kết quả</button>// type bắt buộc phải là file submit
+                </div>
+            </form>
+        </div>
+        @if (ViewData["ThongBao"] != "") // ViewData không cân dấu "@"
+        {
+            <div class="mb-5 col-4 mx-auto">
+                <label for="thongbao" class="form-label fw-bold">Thông Báo</label>
+                <input type="text" class="form-control" id="thongbao" name="thongbao" value="@ViewData["ThongBao"]" aria-describedby="text" disabled>
+            </div>
+        }
+        else
+        {
+            <div class="mb-5 col-4 mx-auto">
+                <label for="ketQua" class="form-label fw-bold">Kết quả</label>
+                <input type="number" class="form-control" id="ketQua" name="ketQua" value="@ViewData["KetQua"]" aria-describedby="text">// dấu a móc dùng để hiển thị giá trị từ Controller.
+            </div>
+        }
+    </div>
+</div>
